@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="nowyTyp" format="json">
+      <types:shape format="weave" example="examples/get.json"><![CDATA[%dw 2.0
+
+type nowyTyp = {|
+  prId: Number {"typeId": "int"}, 
+  priceO: Number {"typeId": "int"}, 
+  priceN: Number {"typeId": "double"}
+|} {"example": "{\\\"prId\\\":1,\\\"priceO\\\":1,\\\"priceN\\\":2.0}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#4b03584d-2c6c-47e3-b353-7faa7e8cd122">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="nowyTyp"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
